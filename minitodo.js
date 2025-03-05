@@ -9,26 +9,32 @@ let todoHead = []
 let signName = document.getElementById("userName").value
 document.getElementById("userSignName").innerHTML = `<h3 style="color: black;">Hello, ${signName}</h3>`
 function addList(){
-    if(userInput.value != '' && userTitle.value != ''){
+    if(userInput.value !== '' && userTitle.value !== ''){
+        document.getElementById("dangerText").innerHTML = ""
         noItems.style.display = "none"
         todoArray.push(userInput.value);
         todoHead.push(userTitle.value)
         displayTodo()
+        console.log("addList:", todoArray)
+        console.log("addList:", todoHead)
         
     }else{
-        dangerText.style.display = "block"
+        // console.log(userInput.value, userTitle.value)
+        // dangerText.style.display = "block"
+        document.getElementById("dangerText").innerHTML = `<p><i style="margin-right: 10px;" class="fa-solid fa-circle-exclamation"></i>Input Field cannot be empty</p>`
     }
 }
 function displayTodo(){
-        dangerText.style.display = "none"
+        // dangerText.style.display = "none"
         userInput.value = ""
         userTitle.value = ""
         todoList.innerHTML = ""
         todoTitle.innerHTML = ""
-    for (i=0; i<todoArray.length; i++){
+    for (let i in todoArray){
+
         todoList.innerHTML +=  `
         <div id="cardd" class="card mb-3 border-0 shadow" style="max-width: 24rem; gap: 1rem;">
-            <div class="card-header bg-transparent border-dark d-flex justify-content-between align-items-center"><h2>${todoHead[i]}</h2><div><i style="font-size: 20px; cursor: pointer; color: red;" onclick="deleteMe(${i})" class="fa-solid fa-trash"></i><i style="font-size: 20px; cursor: pointer; margin-left: 10px; color: red;" onclick="editMe(${i})" class="fa-solid fa-pen-to-square"></i></div></div>
+            <div class="card-header bg-transparent border-dark d-flex justify-content-between align-items-center"><h2>${todoHead[i]}</h2><div><i style="font-size: 20px; cursor: pointer; color: red;" onclick="deleteMe(${i})" class="fa-solid fa-trash"></i><i style="font-size: 20px; cursor: pointer; margin-left: 10px; color: red;" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editModalButton(${i})" class="fa-solid fa-pen-to-square"></i></div></div>
             <div class="card-body text-dark">
                 <p class="card-text">${todoArray[i]}</p>
             </div>
@@ -36,6 +42,14 @@ function displayTodo(){
         </div>`
         todoTitle.innerHTML += `<div id="whitee" style="display: flex; align-items: center;"><p><i style="margin-right: 10px; font-size: 20px;" id="" class="fa-solid fa-tags"></i></p> <p>${todoHead[i]}</p></div>`
     }
+}
+
+function editModalButton(i){
+    document.getElementById("mdbtn").innerHTML =         `
+  
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="editMe(${i})" id="saveButton">Add</button>
+    `
 }
 
 function deleteMe(i){
@@ -49,9 +63,20 @@ function deleteMe(i){
     }
 }
 function editMe(i){
-    let ask = prompt("Enter details to modify")
-    todoArray.splice(i, 1, ask)
-    displayTodo()
+    console.log("Hello user", i)
+    if(newUserTitle.value !='' || newUserInput.value != ''){
+        todoHead[i] = newUserTitle.value
+        todoArray[i] = newUserInput.value
+        console.log("editMe:", todoArray, i)
+        console.log("editMe[i]:", todoArray[i], i)
+        console.log("editMe:", todoHead, i)
+        console.log("editMe[i]:", todoHead[i], i)
+        
+        displayTodo(todoHead, todoArray)
+    }else{
+        dangerTextt.innerHTML = `<p><i style="margin-right: 10px;" class="fa-solid fa-circle-exclamation"></i>Input field cannot be empty</p>`
+    }
+    
 }
 function deleteAll(){
     let confirming = confirm("Are you sure you want to delete all list?")

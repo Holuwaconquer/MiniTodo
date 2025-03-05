@@ -93,13 +93,33 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p id="dangerText" style="display: none;" class="text-danger"><i style="margin-right: 10px;" class="fa-solid fa-circle-exclamation"></i>Input field cannot be empty</p>
+                <p id="dangerText" class="text-danger"></p>
                 <input type="text" class="border form-control mb-4" placeholder="Enter your List Title here"  name="" id="userTitle">
                 <textarea name="" style="resize: none;" placeholder="Enter your list details here" class="border form-control" rows="5" id="userInput"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="addList()" id="saveButton">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Edit Your Todo List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="dangerTextt" class="text-danger"></p>
+                <input type="text" class="border form-control mb-4" placeholder="Enter your List Title here"  name="" id="newUserTitle">
+                <textarea name="" style="resize: none;" placeholder="Enter your list details here" class="border form-control" rows="5" id="newUserInput"></textarea>
+            </div>
+            <div id="mdbtn" class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->
+                <!-- <button type="button" class="btn btn-primary" onclick="editMe()" id="saveButton">Add</button> -->
             </div>
         </div>
     </div>
