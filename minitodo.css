@@ -1,0 +1,162 @@
+body{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: #f8f9fa;
+   /* background: linear-gradient(135deg, #ff7e5f, #feb47b); */
+
+}
+.darktheme{
+    background-color: #343a40;
+    color: white;
+}
+.side-nav{
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* background-color: red; */
+    height: 100vh;
+    padding: 40px 20px;
+    border-right: 1px solid rgb(190, 190, 252);
+}
+.side-2{
+    padding: 40px 20px;
+}
+.side-nav h1{
+    font-size: 2em;
+    font-weight: bold;
+    color: navy;
+}
+.side-nav h3{
+    font-size: 1em;
+    font-weight: 500;
+    color: black;
+}
+.todo-side{
+    background-color: #f8f9fa;
+    
+    box-shadow: inset 0px 0px 50px 10px #dddddd;
+}
+.main-cont{
+    justify-content: space-evenly;
+}
+.drop-profile:hover .profile-list{
+    display: block;
+}
+#deletea{
+    color: white;
+}
+.profile-list{
+    position: absolute;
+    right: 0;
+    top: 40px;
+    display: none;
+    width: 14rem;
+    background-color: #f8f9fa;
+}
+.profile-list p{
+    color: blue;
+}
+.darkthemeBtn{
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+}
+#deletea{
+    background-color: #343a40;
+}
+.bottom-nav{
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    body{
+        overflow-x: hidden;
+        background-color: white;
+    }
+    .main-cont{
+        display: block;
+    }
+    .bottom-nav{
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px   0px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 0px 20px 5px #dddddd;
+        margin-top: 20px;
+        z-index: 1;
+        box-sizing: border-box;
+    }
+    .bottom-nav ul{
+        display: flex;
+        justify-content: space-evenly;
+        margin: auto;
+        box-sizing: border-box;
+    }
+    .bottom-nav ul li{
+        list-style-type: none;
+        
+    }
+    .bottom-nav ul li a{
+        text-decoration: none;
+        color: #343a40;
+        padding: 0 15px;
+    }
+    .bottom-nav ul li a:hover{
+        background-color: #dddddd;
+        border-radius: 10px;
+        padding: 15px;
+    }
+    #stagg{
+        display: block;
+        width: 100%;
+        padding: 20px 40px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 0px 20px 5px #dddddd;
+    }
+    .side-nav{
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none !important;
+        height: 10vh;
+    }
+    .todoDrop{
+        border: none !important;
+    }
+    #sideTitle{
+        display: none;
+    }
+    .drop-profile{
+        display: none;
+    }
+    #paging{
+        display: none !important;
+    }
+    .me-2{
+        display: none;
+    }
+    .side-2{
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    #todoTitle{
+        display: none;
+    }
+    #paging2{
+        display: block;
+        width: 100%;
+    }
+    #del{
+        display: block;
+        width: 100%;
+        float: right;
+        text-align: right;
+    }
+}
