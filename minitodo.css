@@ -40,9 +40,12 @@ body{
 .main-cont{
     justify-content: space-evenly;
 }
-.drop-profile:hover .profile-list{
-    display: block;
+.drop-profile{
+    cursor: pointer;
 }
+/* .drop-profile:hover .profile-list{
+    display: block;
+} */
 #deletea{
     color: white;
 }
