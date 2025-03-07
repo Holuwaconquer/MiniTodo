@@ -6,14 +6,9 @@ let dateString = `${currentDate.toLocaleDateString()} ${currentDate.getHours()}:
 displayDate.innerHTML = `${dateString}`
 let todoArray = []
 
-
-
-// let todoHead = []
-// let signName = document.getElementById("userName").value
-// document.getElementById("userSignName").innerHTML = `<h3 style="color: black;">Hello, ${signName}</h3>`
 function addList(){
-    let userHead1 = document.getElementById('userInput').value
-    let userHead2 = document.getElementById('userTitle').value
+    let userHead1 = document.getElementById('userTitle').value
+    let userHead2 = document.getElementById('userInput').value
     let userOption = {
         userText1: userHead1,
         userText2: userHead2,
@@ -22,17 +17,13 @@ function addList(){
         document.getElementById("dangerText").innerHTML = ""
         noItems.style.display = "none"
         todoArray.push(userOption);
-        // todoHead.push(userTitle.value)
         displayTodo()
         
     }else{
-        // console.log(userInput.value, userTitle.value)
-        // dangerText.style.display = "block"
         document.getElementById("dangerText").innerHTML = `<p><i style="margin-right: 10px;" class="fa-solid fa-circle-exclamation"></i>Input Field cannot be empty</p>`
     }
 }
 function displayTodo(){
-        // dangerText.style.display = "none"
         userInput.value = ""
         userTitle.value = ""
         todoList.innerHTML = ""
@@ -63,7 +54,6 @@ function deleteMe(i){
     let confirming = confirm("Are you sure you want to delete this list?")
     if(confirming){
         todoArray.splice(i, 1)
-        // todoHead.splice(i, 1)
         displayTodo();
     }else{
         displayTodo()
@@ -72,7 +62,6 @@ function deleteMe(i){
 function editMe(i){
     console.log("Hello user", i)
     if(newUserTitle.value !='' || newUserInput.value != ''){
-        // newUserArray.push(userOption2)
         let userHead3 = document.getElementById('newUserTitle').value
         let userHead4 = document.getElementById('newUserInput').value
         todoArray[i].userText1 = userHead3
@@ -86,13 +75,18 @@ function editMe(i){
     
 }
 function deleteAll(){
-    let confirming = confirm("Are you sure you want to delete all list?")
-    if(confirming){
-        todoArray.splice(0, todoArray.length)
-        displayTodo()
+    if(todoArray.length >=1){
+        let confirming = confirm("Are you sure you want to delete all list?")
+        if(confirming){
+            todoArray.splice(0, todoArray.length)
+            displayTodo()
+        }else{
+            displayTodo()
+        }
     }else{
-        displayTodo()
+        alert("No item to delete")
     }
+    
 }
 function darkTheme(){
     body.style.backgroundColor = "#343a40"
@@ -107,8 +101,7 @@ function darkTheme(){
     document.getElementById("deletea").style.backgroundColor = "#f8f9fa"
     document.getElementById("deletea").style.color = "black"
     displayDate.style.color = "white"
-
-    // todo-side.style.boxShadow = "box-shadow: inset 0px 0px 50px 10px #dddddd;"
+    sideTitle.style.color = "white"
 }
 function darkThemeagain(){
     body.style.backgroundColor = "#f8f9fa"
@@ -123,20 +116,71 @@ function darkThemeagain(){
     document.getElementById("deletea").style.backgroundColor = "#343a40"
     document.getElementById("deletea").style.color = "white"
     displayDate.style.color = "#343a40"
-
-    // todo-side.style.boxShadow = "box-shadow: inset 0px 0px 50px 10px #dddddd;"
 }
 
 
 
 const showMore = () =>{
-    document.getElementById('profilelist').style.display = "block"    
-    event.stopPropagation();
+    document.getElementById('profilelist').style.display = "block"
 }
 
-// function hideIt(){
-//     document.getElementById('profileList').style.display = "none"
-// }
                                    
+document.getElementById('speakBtn').addEventListener('click', () => {
+    var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+
+    // recognition.interimResults = true;
+    recognition.start();
+    recognition.onresult = function(event){
+        console.log(event);
+        userInput.value = event.results[0][0].transcript;
+        // let value = event.results[0][0].transcript;
+        // body.style.backgroundColor = value;
+        // speakBack(value)
+    }
+});
+document.getElementById('speakBtn2').addEventListener('click', () => {
+    var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+
+    // recognition.interimResults = true;
+    recognition.start();
+    recognition.onresult = function(event){
+        console.log(event);
+        userTitle.value = event.results[0][0].transcript;
+        // let value = event.results[0][0].transcript;
+        // body.style.backgroundColor = value;
+        // speakBack(value)
+    }
+});
+// for the edit modal button
+document.getElementById('speakBtn3').addEventListener('click', () => {
+    var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+
+    // recognition.interimResults = true;
+    recognition.start();
+    recognition.onresult = function(event){
+        console.log(event);
+        newUserTitle.value = event.results[0][0].transcript;
+        // let value = event.results[0][0].transcript;
+        // body.style.backgroundColor = value;
+        // speakBack(value)
+    }
+});
+document.getElementById('speakBtn4').addEventListener('click', () => {
+    var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+
+    // recognition.interimResults = true;
+    recognition.start();
+    recognition.onresult = function(event){
+        console.log(event);
+        newUserInput.value = event.results[0][0].transcript;
+        // let value = event.results[0][0].transcript;
+        // body.style.backgroundColor = value;
+        // speakBack(value)
+    }
+});
 
                                    
