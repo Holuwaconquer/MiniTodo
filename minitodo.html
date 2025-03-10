@@ -12,7 +12,7 @@
         
     </style>
 </head>
-<body onclick="hideIt()" id="body" class="container-fluid">
+<body id="body" onload="getItem()" class="container-fluid">
     <div class="">
         <div class="row main-cont">
             <div class="col-2 side-nav">
@@ -32,7 +32,7 @@
             <div class="col-10 side-2">
                 <div class="d-flex justify-content-between mb-5">
                         <div id="toTitle" class=""><h3>Todo List</h3></div>
-                        <div onclick="showMore()"  class="drop-profile" style="position: relative;">
+                        <div onclick="showMore()" data-bs-toggle="tooltip" animation="true" data-bs-placement="top"  data-bs-trigger="hover focus" data-bs-html="true" title="Profile"  class="drop-profile" style="position: relative;">
                             <div style="padding: 4px 10px;" class="bg-primary rounded-circle"><i style="font-size: 18px;" class="text-light fa-solid fa-user"></i></div>
                             <i style="cursor: pointer; position: absolute; background-color: #f8f9fa; border: 2px solid #f8f9fa; border-radius: 100%; color: blue; bottom: 5px; right: -5px;" class="fa-solid fa-circle-chevron-down"></i>
                             <div id="profilelist" class="profile-list rounded shadow py-3 px-4">
@@ -141,11 +141,11 @@
 <div class="bottom-nav">
     <div>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Search</a></li>
-            <li><a href="">Archived Note</a></li>
-            <li><a href="">Title</a></li>
-            <li><a href="">Settings</a></li>
+            <li data-bs-toggle="tooltip" animation="true" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-html="true" title="Home"><a href="#"><i class="fa-solid fa-house"></i></a></li>
+            <li data-bs-toggle="tooltip" animation="true" data-bs-placement="top" data-bs-trigger="hover focus" title="Search"><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            <li data-bs-toggle="tooltip" animation="true" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-html="true" title="Archived Note"><a href=""><i class="fa-solid fa-box-archive"></i></a></li>
+            <li data-bs-toggle="tooltip" animation="true" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-html="true" title="Title"><a href=""><i class="fa-solid fa-heading"></i></a></li>
+            <li data-bs-toggle="tooltip" animation="true" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-html="true" title="Settings"><a href=""><i class="fa-solid fa-gear"></i></a></li>
         </ul>
     </div>
 </div>

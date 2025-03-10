@@ -22,14 +22,32 @@ function addList(){
     }else{
         document.getElementById("dangerText").innerHTML = `<p><i style="margin-right: 10px;" class="fa-solid fa-circle-exclamation"></i>Input Field cannot be empty</p>`
     }
+
+    // localStorage.setItem('userdetails', JSON.stringify(todoArray))
+    // let retrievedUserDetails = JSON.parse(localStorage.getItem('userdetails'));
+    // console.log(retrievedUserDetails)
 }
+
+function getItem(){
+    let retrievedUserDetails = localStorage.getItem('userdetails');
+    if(retrievedUserDetails){
+        todoArray = JSON.parse(retrievedUserDetails)
+        noItems.style.display = "none"
+    }else{
+        todoArray = []
+    }
+    console.log(retrievedUserDetails)
+    displayTodo()
+
+}
+
 function displayTodo(){
+    localStorage.setItem('userdetails', JSON.stringify(todoArray))
         userInput.value = ""
         userTitle.value = ""
         todoList.innerHTML = ""
         todoTitle.innerHTML = ""
     for (let i in todoArray){
-
         todoList.innerHTML +=  `
         <div id="cardd" class="card mb-3 border-0 shadow" style="max-width: 24rem; gap: 1rem;">
             <div class="card-header bg-transparent border-dark d-flex justify-content-between align-items-center"><h2>${todoArray[i].userText1}</h2><div><i style="font-size: 20px; cursor: pointer; color: red;" onclick="deleteMe(${i})" class="fa-solid fa-trash"></i><i style="font-size: 20px; cursor: pointer; margin-left: 10px; color: red;" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editModalButton(${i})" class="fa-solid fa-pen-to-square"></i></div></div>
@@ -86,6 +104,7 @@ function deleteAll(){
     }else{
         alert("No item to delete")
     }
+    localStorage.removeItem('userdetails')
     
 }
 function darkTheme(){
